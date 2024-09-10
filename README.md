@@ -3,7 +3,7 @@
 ### Application Suitability
 * **Scalability Requirements:** The app needs to handle high volumes of concurrent users, especially during peak times when multiple users might be editing notes, logging in, or syncing with external calendars. Microservices allow each component to be scaled independently based on its demand, ensuring that the entire system remains responsive under load.
 * **Decoupled Development and Deployment:** The app has distinct functionalities such as user authentication, real-time note collaboration, and calendar integration. By separating these functions into microservices, 2 students can work on different features simultaneously without interfering with each other. This leads to faster development and more efficient updates.
-* **Technology Diversity:** Microservices architecture enables using the best-suited technologies for each service. For instance, NodeJS with MongoDB is optimal for handling authentication processes, while GraphQL provides a flexible and efficient solution for real-time data interactions in the note-taking service. Using Java for the calendar integration ensures compatibility and robust API management.
+* **Technology Diversity:** Microservices architecture enables using the best-suited technologies for each service. For instance, NodeJS with MongoDB is optimal for handling authentication processes, while Neo4j provides a flexible and efficient solution for real-time data interactions in the note-taking service. Using Java for the calendar integration ensures compatibility and robust API management.
 
 **Example:** 
 * **Google Docs:** Manages real-time collaboration by segmenting various services responsible for document editing, user permissions, and synchronization. The use of microservices allows Google Docs to handle multiple concurrent edits while maintaining document integrity and performance.
@@ -26,8 +26,8 @@
   * Communication: REST API for synchronous requests between services.
 
 * Note-Taking Service:
-  * Language/Framework: NodeJS, Apollo Server (GraphQL)
-  * Database: Uses GraphQL to query data.
+  * Language/Framework: NodeJS, Express
+  * Database: Neo4j.
   * Communication: WebSocket for real-time updates; REST for other requests.
 
 * Calendar Service:
@@ -111,107 +111,71 @@
 
 **Endpoints:**
 
-1. **`mutation createNote`**
+1. **`POST /notes`**
    - **Purpose**: Create a new note.
-   - **Request Format (GraphQL Mutation)**:
-     ```graphql
-     mutation {
-       createNote(title: "string", content: "string") {
-         id
-         title
-         content
-         createdAt
-       }
+   - **Request Body (JSON)**:
+     ```json
+     {
+       "title": "string",
+       "content": "string"
      }
      ```
    - **Response**:
      ```json
      {
-       "data": {
-         "createNote": {
-           "id": "string",
-           "title": "string",
-           "content": "string",
-           "createdAt": "timestamp"
-         }
-       }
+       "id": "string",
+       "title": "string",
+       "content": "string",
+       "createdAt": "timestamp"
      }
      ```
 
-2. **`mutation updateNote`**
+2. **`PUT /notes/{id}`**
    - **Purpose**: Update an existing note.
-   - **Request Format (GraphQL Mutation)**:
-     ```graphql
-     mutation {
-       updateNote(id: "string", content: "string") {
-         id
-         title
-         content
-         updatedAt
-       }
+   - **Request Parameters**: 
+     - `id` (Path Parameter): The ID of the note to be updated.
+   - **Request Body (JSON)**:
+     ```json
+     {
+       "content": "string"
      }
      ```
    - **Response**:
      ```json
      {
-       "data": {
-         "updateNote": {
+       "id": "string",
+       "title": "string",
+       "content": "string",
+       "updatedAt": "timestamp"
+     }
+     ```
+
+3. **`GET /users/{userId}/notes`**
+   - **Purpose**: Retrieve all notes for a user.
+   - **Request Parameters**: 
+     - `userId` (Path Parameter): The ID of the user whose notes are being retrieved.
+   - **Response**:
+     ```json
+     {
+       "notes": [
+         {
            "id": "string",
            "title": "string",
            "content": "string",
            "updatedAt": "timestamp"
          }
-       }
+       ]
      }
      ```
 
-3. **`query getNotes`**
-   - **Purpose**: Retrieve all notes for a user.
-   - **Request Format (GraphQL Query)**:
-     ```graphql
-     query {
-       getNotes(userId: "string") {
-         id
-         title
-         content
-         updatedAt
-       }
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "data": {
-         "getNotes": [
-           {
-             "id": "string",
-             "title": "string",
-             "content": "string",
-             "updatedAt": "timestamp"
-           }
-         ]
-       }
-     }
-     ```
-
-4. **`mutation deleteNote`**
+4. **`DELETE /notes/{id}`**
    - **Purpose**: Delete an existing note.
-   - **Request Format (GraphQL Mutation)**:
-     ```graphql
-     mutation {
-        deleteNote(id: "string") {
-          message
-        }
-      }
-     ```
+   - **Request Parameters**: 
+     - `id` (Path Parameter): The ID of the note to be deleted.
    - **Response**:
      ```json
      {
-       "data": {
-         "deleteNote": {
-           "message": "string"
-         }
-       }
+       "message": "Note deleted successfully"
      }
      ```
 
