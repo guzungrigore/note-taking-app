@@ -11,7 +11,7 @@
 ##
 ### Service Boundaries
 
-![image](https://github.com/user-attachments/assets/be82a837-bc15-4320-ae57-afaab27543f4)
+![image](https://github.com/user-attachments/assets/09a0cd93-f66e-480c-8ddc-90ca73808951)
 
 * **Authentication Service:** Manages user authentication, authorization, and session management.
 * **Real-Time Note-Taking Service:** Manages note creation, updates, and real-time collaboration among users.
