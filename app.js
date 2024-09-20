@@ -1,8 +1,7 @@
 import express from "express";
 import authRouter from "./routes/auth.js";
-import indexRouter from "./routes/index.js";
 import {config} from "dotenv";
-import mongoose, {connect} from "mongoose";
+import {connect} from "mongoose";
 import session from "express-session";
 import passport from "passport";
 import {AuthUser} from "./schemas/userSchema.js";
@@ -47,13 +46,11 @@ connect(MongodbUrl)
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"));
 
-// app.set('view engine', 'pug');
 app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true,
 }))
 app.use(express.json());
-app.use('/', indexRouter);
 app.use('/auth', authRouter)
 
 
