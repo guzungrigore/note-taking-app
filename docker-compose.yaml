@@ -1,0 +1,38 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: db_container
+    ports:
+      - "27017:27017"
+    networks:
+      - shared-network
+    env_file: ./.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
+    volumes:
+      - ./mongo-data:/data/db
+
+  api-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: auth-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    networks:
+      - shared-network
+    env_file: ./.env
+    environment:
+      MONGODB_URI: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb:27017/${DB_NAME}
+      NODE_ENV: development
+      DB_NAME: authDB
+    volumes:
+      - .:/app
+    command: ["npm", "start"]
+
+networks:
+  shared-network:
+    external: true

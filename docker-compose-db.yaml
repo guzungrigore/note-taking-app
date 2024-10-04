@@ -1,0 +1,17 @@
+#version: '3.8'
+#
+#services:
+#  mongodb:
+#    image: mongo:5.0.2
+#    container_name: mongodb_container
+#    ports:
+#      - "27017:27017"  # Expose port 27017
+#    restart: unless-stopped  # Restart container unless stopped
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}  # Use environment variable for username
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}  # Use environment variable for password
+#    volumes:
+#      - mongo-data:/data/db  # Persist data in a Docker volume
+#
+#volumes:
+#  mongo-data:  # Create a named volume for MongoDB data
