@@ -1,13 +1,13 @@
 {
   "type": "module",
-  "name": "teza-travel-moldova-back",
+  "name": "api-server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "run": "nodemon app.js"
+    "start": "nodemon app.js"
   },
   "dependencies": {
-    "connect-mongodb-session": "^5.0.0",
+    "axios": "^1.7.7",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -15,10 +15,10 @@
     "express": "~4.16.1",
     "express-session": "^1.18.0",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.3",
     "morgan": "~1.9.1",
     "nodemon": "^3.1.5",
-    "passport": "^0.7.0",
-    "passport-local-mongoose": "^8.0.0"
+    "uuid": "^10.0.0"
   }
 }

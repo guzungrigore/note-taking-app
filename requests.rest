@@ -3,8 +3,8 @@ POST http://127.0.0.1:3000/auth/register
 Content-Type: application/json
 
 {
-  "username": "adissssssgbdsn",
-  "password": "adminadmin"
+  "username": "grigoree",
+  "password": "grigoree"
 }
 
 ### GET request to example server
@@ -12,10 +12,13 @@ POST http://127.0.0.1:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "adissssssgbdsn",
-  "password": "adminadmin"
+  "username": "grigoree",
+  "password": "grigoree"
 }
 
 ###
-GET http://127.0.0.1:3000/auth/checkAuth
+PUT http://127.0.0.1:3000/auth/resetPassword
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3JpZ29yIiwiaWQiOiI2ZDM4MTI2OC1kODY0LTQyNDEtOTQxZC1kNGI2NmZkZjA3NGEiLCJpYXQiOjE3MjgwNTM1ODUsImV4cCI6MTcyODEzOTk4NX0.BKZ-WuxR819GOMkmxsd-jyjHw40VSQMm8AyrbuBmwdQ
 
+{"password": "ada"}
