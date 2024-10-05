@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ChangeSet for creating the Events table -->
+    <changeSet id="1" author="grigore">
+        <createTable tableName="events">
+            <column name="event_id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="google_event_id" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" />
+            </column>
+            <column name="event_title" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="event_start_time" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="event_end_time" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="event_description" type="TEXT"/>
+            <column name="event_location" type="VARCHAR(255)"/>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <!-- Add an index on google_event_id for faster lookup -->
+        <createIndex indexName="idx_google_event_id" tableName="events">
+            <column name="google_event_id"/>
+        </createIndex>
+
+    </changeSet>
+
+    <!-- ChangeSet for creating the GoogleTokens table -->
+    <changeSet id="2" author="grigore">
+        <createTable tableName="google_tokens">
+            <column name="token_id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" />
+            </column>
+            <column name="google_access_token" type="VARCHAR(512)">
+                <constraints nullable="false" />
+            </column>
+            <column name="google_refresh_token" type="VARCHAR(512)"/>
+            <column name="token_expiry" type="TIMESTAMP"/>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <!-- ChangeSet for creating the Event_Note_Link table -->
+    <changeSet id="3" author="grigore">
+        <createTable tableName="event_note_link">
+            <column name="event_id" type="UUID">
+                <constraints nullable="false" />
+            </column>
+            <column name="note_id" type="UUID"> <!-- Adjust type based on your Note-Taking service -->
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <!-- Add foreign key constraint on event_id -->
+        <addForeignKeyConstraint
+                baseTableName="event_note_link"
+                baseColumnNames="event_id"
+                referencedTableName="events"
+                referencedColumnNames="event_id"
+                constraintName="fk_event_note_event_id"/>
+    </changeSet>
+</databaseChangeLog>
