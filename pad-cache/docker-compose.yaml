@@ -1,0 +1,15 @@
+services:
+  cache-server:
+    build: .
+    container_name: cache-service
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    networks:
+      - shared-network
+    command: ["npm", "start"]
+
+networks:
+  shared-network:
+    external: true
