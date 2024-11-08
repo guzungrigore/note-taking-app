@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "c15cee7f-23b2-4f43-9353-4b422c142ff1",
+		"name": "PAD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38800099"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"grigoree\",\r\n  \"password\": \"grigoree\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"grigoree\",\r\n  \"password\": \"grigoree\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "PasswordReset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwYjFkMjJmLTU5N2MtNDRhYi05YzM3LWFmZmVkMzM0MzBiYiIsInVzZXIiOiJncmlnb3JlZSIsImlhdCI6MTcyODA4OTc2NiwiZXhwIjoxNzI4MTc2MTY2fQ.VetL7m2vEMvNBVACbpCklPFJQro_-_ttVb-Iec3jBb8"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"password\": \"grigoree\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/auth/resetPassword"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "CreateNote",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwYjFkMjJmLTU5N2MtNDRhYi05YzM3LWFmZmVkMzM0MzBiYiIsInVzZXIiOiJncmlnb3JlZSIsImlhdCI6MTcyODA4NTY3NiwiZXhwIjoxNzI4MTcyMDc2fQ.ynFZbk9KcCC4jiDgXBeHojyMBYBW4qdrKobmgceBoMA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"noteName\": \"Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/note/create"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllRecords",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwYjFkMjJmLTU5N2MtNDRhYi05YzM3LWFmZmVkMzM0MzBiYiIsInVzZXIiOiJncmlnb3JlZSIsImlhdCI6MTcyODA4ODQ3MywiZXhwIjoxNzI4MTc0ODczfQ.eLCKmHtkYEJ26Oa8EQWmMAo6xZkGoS0wxb3Gp52nBDg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/note/UTM/records"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteNode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwYjFkMjJmLTU5N2MtNDRhYi05YzM3LWFmZmVkMzM0MzBiYiIsInVzZXIiOiJncmlnb3JlZSIsImlhdCI6MTcyODEwOTk1OSwiZXhwIjoxNzI4MTk2MzU5fQ.7BPN22BtoNopFFmexoi573G0p_mLDiRjfx3t65TR5jU"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/note/UTM"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateRecord",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwYjFkMjJmLTU5N2MtNDRhYi05YzM3LWFmZmVkMzM0MzBiYiIsInVzZXIiOiJncmlnb3JlZSIsImlhdCI6MTcyODEwOTk1OSwiZXhwIjoxNzI4MTk2MzU5fQ.7BPN22BtoNopFFmexoi573G0p_mLDiRjfx3t65TR5jU"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"newContent\": \"Updated message content for UTM Note\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/note/UTM/9348457e-2430-44b6-8b56-7b331edfa679"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendar",
+			"item": [
+				{
+					"name": "NoteEventLink",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3JpZ29yIiwiaWQiOiI2ZDM4MTI2OC1kODY0LTQyNDEtOTQxZC1kNGI2NmZkZjA3NGEiLCJpYXQiOjE3MjgwNTM1ODUsImV4cCI6MTcyODEzOTk4NX0.BKZ-WuxR819GOMkmxsd-jyjHw40VSQMm8AyrbuBmwdQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/notes/link?eventId=2d56c335-d29e-4dfd-b27a-cff10b814340&noteId=939574f1-ed6d-44bf-b346-d5ecb687f760",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"notes",
+								"link"
+							],
+							"query": [
+								{
+									"key": "eventId",
+									"value": "2d56c335-d29e-4dfd-b27a-cff10b814340"
+								},
+								{
+									"key": "noteId",
+									"value": "939574f1-ed6d-44bf-b346-d5ecb687f760"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LinkByUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZ3JpZ29yIiwiaWQiOiI2ZDM4MTI2OC1kODY0LTQyNDEtOTQxZC1kNGI2NmZkZjA3NGEiLCJpYXQiOjE3MjgwNTM1ODUsImV4cCI6MTcyODEzOTk4NX0.BKZ-WuxR819GOMkmxsd-jyjHw40VSQMm8AyrbuBmwdQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8000/api/notes/links/user"
+					},
+					"response": []
+				},
+				{
+					"name": "GoogleToken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUwYjFkMjJmLTU5N2MtNDRhYi05YzM3LWFmZmVkMzM0MzBiYiIsInVzZXIiOiJncmlnb3JlZSIsImlhdCI6MTcyODA4OTc2NiwiZXhwIjoxNzI4MTc2MTY2fQ.VetL7m2vEMvNBVACbpCklPFJQro_-_ttVb-Iec3jBb8"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/oauth2/callback?code=4%2F0AVG7fiSFaEr7RoMhXiKGmbu-bPpYrSbBGazhr7I0TrMDOKjx8_NETat5kpby09gJ14m7jw",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"oauth2",
+								"callback"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "4%2F0AVG7fiSFaEr7RoMhXiKGmbu-bPpYrSbBGazhr7I0TrMDOKjx8_NETat5kpby09gJ14m7jw"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
